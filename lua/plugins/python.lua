@@ -1,7 +1,4 @@
 return {
-  -- LazyVim's Python extra: basedpyright LSP, ruff, treesitter, DAP, neotest, venv selector
-  { import = "lazyvim.plugins.extras.lang.python" },
-
   -- Mason: ensure Python tooling is installed
   {
     "williamboman/mason.nvim",

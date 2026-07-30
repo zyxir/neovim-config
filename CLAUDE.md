@@ -32,9 +32,22 @@ All files under `lua/plugins/` are auto-loaded by lazy.nvim. Each file returns a
 - **Override LazyVim plugin opts**: return `{ "LazyVim/LazyVim", opts = { colorscheme = "catppuccin" } }` or target the specific plugin directly with `{ "author/plugin.nvim", opts = { ... } }`
 - **Override opts with a function** (to extend rather than replace lists/tables): `opts = function(_, opts) vim.list_extend(opts.ensure_installed, { "new-parser" }) end`
 - **Disable a plugin**: `{ "author/plugin.nvim", enabled = false }`
-- **Import LazyVim extras**: `{ import = "lazyvim.plugins.extras.lang.typescript" }`
 - **Add LSP server**: extend `neovim/nvim-lspconfig` opts with a new entry in `servers` and add any `dependencies`
 - **Add Mason tools**: extend `williamboman/mason.nvim` opts with new entries in `ensure_installed`
+
+### LazyVim extras
+
+LazyVim extras must be imported in `lua/config/lazy.lua` — **not** inside plugin files under `lua/plugins/`. The spec order matters:
+
+```lua
+spec = {
+  { "LazyVim/LazyVim", import = "lazyvim.plugins" },       -- 1. base
+  { import = "lazyvim.plugins.extras.lang.python" },        -- 2. extras
+  { import = "plugins" },                                   -- 3. user overrides
+}
+```
+
+Extras imported from plugin files load too late and trigger a warning. After importing the extra in `lazy.lua`, use a plugin file (e.g. `lua/plugins/python.lua`) only for your overrides on top of it.
 
 ## Python development
 
