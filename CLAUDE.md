@@ -73,6 +73,21 @@ To have a venv be auto-detected on first open, create one in a standard location
 - **Testing**: neotest-python with pytest — use LazyVim's neotest keymaps (`<leader>tt` to run nearest test, etc.)
 - **Debugging**: nvim-dap-python — `<leader>dPt` debugs the method under cursor, `<leader>dPc` debugs the class
 
+## Claude Code
+
+LazyVim's `claudecode` extra embeds the Claude Code CLI in Neovim.
+
+| Key | Action |
+|---|---|
+| `<leader>ac` | Toggle Claude |
+| `<leader>af` | Focus Claude |
+| `<leader>as` | Send selection (visual mode) |
+| `<leader>ab` | Add current buffer as context |
+| `<leader>ar` | Resume last session |
+| `<leader>aC` | Continue last session |
+| `<leader>aa` | Accept diff |
+| `<leader>ad` | Deny diff |
+
 ## Commands
 
 - **Format Lua files**: `stylua .` — configuration in `stylua.toml` (2-space indent, 120 column width)
