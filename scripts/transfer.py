@@ -48,7 +48,7 @@ def is_windows() -> bool:
     return sys.platform == "win32"
 
 
-def run(cmd: list[str], **kwargs) -> "subprocess.CompletedProcess[str]":
+def run(cmd: list[str], **kwargs) -> subprocess.CompletedProcess[str]:
     return subprocess.run(cmd, check=True, text=True, **kwargs)
 
 
