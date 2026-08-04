@@ -21,6 +21,7 @@ require("lazy").setup({
     -- import LazyVim extras (must come before user plugins so overrides take effect)
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.scala" },
+    { import = "lazyvim.plugins.extras.dap.core" },
     { import = "lazyvim.plugins.extras.ai.claudecode" },
     -- import/override with your plugins
     { import = "plugins" },
