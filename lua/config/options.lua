@@ -9,6 +9,10 @@ vim.g.lazyvim_python_lsp = "basedpyright"
 -- Format on save (global). Toggle with <leader>uf
 vim.g.autoformat = true
 
--- GUI font (Neovide) — proportional Nerd Font for natural icon spacing
-vim.o.guifont = "JetBrainsMono Nerd Font Propo:h12"
+-- GUI font (Neovide) — proportional Nerd Font on macOS, Mono or Propo on Windows
+if vim.fn.has("win32") == 1 then
+  vim.o.guifont = "JetBrainsMono Nerd Font Mono:h10"
+else
+  vim.o.guifont = "JetBrainsMono Nerd Font Propo:h12"
+end
 

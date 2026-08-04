@@ -3,6 +3,8 @@ return {
   {
     "mason-org/mason.nvim",
     opts = {
+      -- Prefer tools already on PATH over Mason-installed ones (offline-friendly)
+      PATH = "prepend",
       ensure_installed = {
         "basedpyright",
         "ruff",
