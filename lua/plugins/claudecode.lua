@@ -2,6 +2,7 @@ return {
   {
     "coder/claudecode.nvim",
     opts = {
+      keep_terminal_focus = true,
       terminal = {
         provider = "snacks",
         snacks_win_opts = {
