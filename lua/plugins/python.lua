@@ -1,7 +1,7 @@
 return {
   -- Mason: ensure Python tooling is installed
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "basedpyright",
