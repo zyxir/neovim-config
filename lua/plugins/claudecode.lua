@@ -2,6 +2,7 @@ return {
   {
     "coder/claudecode.nvim",
     opts = {
+      terminal_cmd = "claude --permission-mode auto",
       keep_terminal_focus = true,
       terminal = {
         provider = "snacks",
