@@ -8,9 +8,11 @@
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
 -- Disable inlay hints in Scala (Metals is overzealous)
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "scala",
-  callback = function()
-    vim.lsp.inlay_hint.enable(false, { bufnr = 0 })
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client.name == "metals" then
+      vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
+    end
   end,
 })
