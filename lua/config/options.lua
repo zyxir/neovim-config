@@ -11,8 +11,9 @@ vim.g.autoformat = true
 
 -- GUI font (Neovide) — proportional Nerd Font on macOS, Mono or Propo on Windows
 if vim.fn.has("win32") == 1 then
-  vim.o.guifont = "JetBrainsMono Nerd Font Mono:h10"
+  vim.o.guifont = "JetBrainsMonoNL NFM:h12"
 else
   vim.o.guifont = "JetBrainsMonoNL Nerd Font Propo:h12"
 end
+
 
