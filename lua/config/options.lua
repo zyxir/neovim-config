@@ -9,9 +9,11 @@ vim.g.lazyvim_python_lsp = "basedpyright"
 -- Format on save (global). Toggle with <leader>uf
 vim.g.autoformat = true
 
--- GUI font (Neovide) — proportional Nerd Font on macOS, Mono or Propo on Windows
+-- GUI font (Neovide)
+-- Use PowerShell instead of cmd.exe for the built-in terminal on Windows
 if vim.fn.has("win32") == 1 then
   vim.o.guifont = "JetBrainsMonoNL NFM:h12"
+  vim.o.shell = "powershell"
 else
   vim.o.guifont = "JetBrainsMonoNL Nerd Font Propo:h12"
 end
