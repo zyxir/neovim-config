@@ -2,6 +2,24 @@
 
 Personal Neovim configuration built on [LazyVim](https://github.com/LazyVim/LazyVim).
 
+## Install
+
+```bash
+git clone https://github.com/zyxir/neovim-config.git ~/.config/nvim
+```
+
+First launch auto-bootstraps lazy.nvim and installs all plugins. Language servers, formatters, and debuggers are installed automatically by Mason — no manual setup.
+
+### Prerequisites
+
+| Dependency | Why | macOS | Windows |
+|---|---|---|---|
+| Neovim ≥ 0.10 | Required by multicursor, snacks | `brew install neovim` | `winget install Neovim.Neovim` |
+| Git | Clone repo + plugin management | built-in (`xcode-select --install`) | `winget install Git.Git` |
+| [ripgrep](https://github.com/BurntSushi/ripgrep) | Search engine for telescope, grug-far | `brew install ripgrep` | `winget install BurntSushi.ripgrep.MSVC` |
+| [Nerd Font](https://www.nerdfonts.com) | Icons in UI (bufferline, lualine, etc.) | [JetBrainsMonoNL Nerd Font Propo](https://github.com/ryanoasis/nerd-fonts/releases) | same |
+| [macism](https://github.com/laishulu/macism) | IM auto-switching (macOS only) | `brew tap laishulu/homebrew && brew install macism` | — |
+
 ## Keybindings
 
 | Key | Action |
