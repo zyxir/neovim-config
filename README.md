@@ -5,7 +5,11 @@ Personal Neovim configuration built on [LazyVim](https://github.com/LazyVim/Lazy
 ## Install
 
 ```bash
+# macOS / Linux
 git clone https://github.com/zyxir/neovim-config.git ~/.config/nvim
+
+# Windows
+git clone https://github.com/zyxir/neovim-config.git %LOCALAPPDATA%\nvim
 ```
 
 First launch auto-bootstraps lazy.nvim and installs all plugins. Language servers, formatters, and debuggers are installed automatically by Mason — no manual setup.
@@ -18,6 +22,7 @@ First launch auto-bootstraps lazy.nvim and installs all plugins. Language server
 | Git | Clone repo + plugin management | built-in (`xcode-select --install`) | `winget install Git.Git` |
 | [ripgrep](https://github.com/BurntSushi/ripgrep) | Search engine for telescope, grug-far | `brew install ripgrep` | `winget install BurntSushi.ripgrep.MSVC` |
 | [Nerd Font](https://www.nerdfonts.com) | Icons in UI (bufferline, lualine, etc.) | [JetBrainsMonoNL Nerd Font Propo](https://github.com/ryanoasis/nerd-fonts/releases) | same |
+| C compiler | Compile treesitter parsers | — | `winget install BrechtSanders.WinLibs.POSIX.UCRT`¹ |
 | [macism](https://github.com/laishulu/macism) | IM auto-switching (macOS only) | `brew tap laishulu/homebrew && brew install macism` | — |
 
 ## Keybindings
@@ -38,3 +43,5 @@ First launch auto-bootstraps lazy.nvim and installs all plugins. Language server
 - **Font**: JetBrainsMonoNL Nerd Font Propo (no ligatures)
 - **Python**: basedpyright instead of pyright
 - **Scala**, **DAP**, **Claude Code** extras enabled
+
+¹ LLVM's `clang` targets MSVC on Windows and cannot compile without Visual Studio Build Tools. WinLibs bundles a self-contained GCC that works out of the box.
