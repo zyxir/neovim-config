@@ -31,7 +31,7 @@ function M.ensure()
   local root = find_root()
 
   -- Create a bottom split with a terminal running sbt in the project root
-  vim.cmd("botright split | terminal")
+  vim.cmd("botright 12 split | terminal")
   local bufnr = vim.api.nvim_get_current_buf()
   local chan = vim.bo[bufnr].channel
 
