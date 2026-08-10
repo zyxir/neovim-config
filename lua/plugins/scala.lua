@@ -50,7 +50,7 @@ return {
         end,
         desc = "Metals import build",
       },
-      -- (new) Run current test file via sbt in a terminal split
+      -- (new) Run current test file via persistent sbt terminal
       {
         "<leader>mt",
         function()
@@ -79,11 +79,7 @@ return {
           end
 
           local fqcn = pkg ~= "" and (pkg .. "." .. cls) or cls
-
-          vim.cmd("botright split | terminal")
-          vim.cmd("startinsert")
-          local chan = vim.bo.channel
-          vim.fn.chansend(chan, 'sbt "testOnly ' .. fqcn .. '"\n')
+          require("utils.sbt").send("testOnly " .. fqcn)
         end,
         desc = "Run test file via sbt",
       },
