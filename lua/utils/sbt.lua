@@ -31,9 +31,12 @@ function M.ensure()
   local root = find_root()
 
   -- Create a bottom split with a terminal running sbt in the project root
-  vim.cmd("botright 12 split | terminal")
+  vim.cmd("botright 18 split | terminal")
   local bufnr = vim.api.nvim_get_current_buf()
   local chan = vim.bo[bufnr].channel
+
+  -- Rename the buffer so it shows as "sbt" instead of "zsh"
+  vim.api.nvim_buf_set_name(bufnr, "sbt")
 
   -- Send cd + sbt so sbt runs in the correct directory
   vim.fn.chansend(chan, 'cd "' .. root .. '" && sbt\n')
@@ -77,10 +80,10 @@ end
 --- pty, so it works even if sbt is still starting up.
 --- @param cmd string The sbt command to run (e.g. 'testOnly mlse.MySpec')
 function M.send(cmd)
-  local _, chan = M.ensure()
+  local bufnr, chan = M.ensure()
 
   -- Briefly focus the terminal so the user sees the output
-  local win = vim.fn.bufwinid(M.bufnr)
+  local win = vim.fn.bufwinid(bufnr)
   local prev_win = vim.api.nvim_get_current_win()
 
   if win ~= -1 and win ~= prev_win then
@@ -89,6 +92,16 @@ function M.send(cmd)
   end
 
   vim.fn.chansend(chan, cmd .. "\n")
+
+  -- Auto-scroll to bottom on next redraw
+  if win ~= -1 then
+    vim.schedule(function()
+      if vim.api.nvim_win_is_valid(win) then
+        local last = vim.api.nvim_buf_line_count(bufnr)
+        vim.api.nvim_win_set_cursor(win, { last, 0 })
+      end
+    end)
+  end
 end
 
 return M
