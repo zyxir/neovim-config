@@ -7,7 +7,7 @@ return {
     set_previous_events = {}, -- disable restore-previous behavior
     async_switch_im = true,
   },
-  cond = vim.fn.has("mac") == 1, -- macOS only
+  enabled = false, -- disabled due to lag from IM switching
   config = function(_, opts)
     require("im_select").setup(opts)
 
