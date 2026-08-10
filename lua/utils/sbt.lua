@@ -57,7 +57,14 @@ function M.ensure()
     vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", opts)
   end
 
-  vim.schedule(setup)
+  -- Lock this window to the sbt buffer (prevents [b, :bnext, etc.)
+  vim.schedule(function()
+    setup()
+    local win = vim.fn.bufwinid(bufnr)
+    if win ~= -1 then
+      vim.api.nvim_win_set_option(win, "winfixbuf", true)
+    end
+  end)
 
   -- Cleanup tracking when the buffer is wiped
   vim.api.nvim_create_autocmd("BufWipeout", {
